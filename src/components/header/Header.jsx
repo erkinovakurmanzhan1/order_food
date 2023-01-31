@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { BasketContext } from "../../store/BasketContext";
 import BasketButton from "./BasketButton";
-// import { ReactComponent as BasketIcon } from "../../assets/icons/basket-icon.svg";
 
-const Header = () => {
+const Header = ({ onShowBasket }) => {
+  const { items } = useContext(BasketContext);
+
+  const [animationClass, setAnimationClass] = useState();
+
+  const calculateTotalAmount = () => {
+    const sum = items.reduce((s, item) => {
+      return s + item.amount;
+    }, 0);
+
+
+    return sum;
+  };
+
+  useEffect(() => {
+    setAnimationClass("bump");
+
+   const id= setTimeout(()=>{
+      setAnimationClass('')
+    },300)
+
+    return ()=>{
+      clearTimeout(id)
+    }
+  },[items]);
+
   return (
     <Container>
       <Logo>ReactMeals</Logo>
-      <BasketButton></BasketButton>
+      <BasketButton
+        className={animationClass}
+        onClick={onShowBasket}
+        count={calculateTotalAmount()}
+      />
     </Container>
   );
 };
@@ -18,7 +47,7 @@ const Container = styled.header`
   position: fixed;
   top: 0;
   z-index: 1;
-  background-color: #8A2B06;
+  background-color: #8a2b06;
   width: 100%;
   height: 101px;
   display: flex;
@@ -26,6 +55,28 @@ const Container = styled.header`
   align-items: center;
   padding-left: 120px;
   padding-right: 120px;
+
+  .bump {
+    animation: bump 300ms ease-out;
+  }
+
+  @keyframes bump {
+    0% {
+      transform: scale(1);
+    }
+    10% {
+      transform: scale(0.9);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 `;
 const Logo = styled.p`
   font-weight: 600;

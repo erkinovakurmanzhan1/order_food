@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-// import Button from "../../UI/Button";    
+// import Button from "../../UI/Button";
 // import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
 import MealItemForm from "./MealItemForm";
 
@@ -14,11 +13,9 @@ const MealItem = ({ meal }) => {
           <StyledPrice>${meal.price}</StyledPrice>
         </StyledItemInfo>
         <div>
-            <StyledInput>
-          <MealItemForm id={meal.id}/>
+          <StyledInput>
+            <MealItemForm id={meal._id} price={meal.price} title={meal.title} />
           </StyledInput>
-          
-         
         </div>
       </Container>
     </div>
@@ -69,7 +66,4 @@ const StyledPrice = styled.span`
   margin-top: 4px;
 `;
 
-
-const StyledInput = styled.div`
-    
-`
+const StyledInput = styled.div``;

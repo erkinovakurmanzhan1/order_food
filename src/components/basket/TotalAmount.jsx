@@ -6,7 +6,6 @@ const TotalAmount = ({price,onClose,onOrder}) => {
 const orderButton =price > 0 && <Button onClick={onOrder}>Order</Button>
 
 const fixedPrice = price.toFixed(2)
-
   return (
     <div>
       <InfoContainer>

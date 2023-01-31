@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import { ReactComponent as MinusIcon } from "../../assets/icons/minus.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plusIcon.svg";
 
-
-const BasketItem = ({ title, price, amount }) => {
+const BasketItem = ({ title, price, amount,incrementAmount,decrementAmount }) => {
+  
+  
   return (
     <Container>
       <Title>{title}</Title>
@@ -15,8 +16,12 @@ const BasketItem = ({ title, price, amount }) => {
           <Amount>x{amount}</Amount>
         </PriceAndAmountContainer>
         <CounterContainer>
-          <Button borderStyle='squared' variant="outlined"><StyledMinusIcon/></Button>
-          <Button borderStyle='squared' variant="outlined"><StyledPlusIcon/></Button>
+          <Button borderStyle="squared" variant="outlined" onClick={decrementAmount}>
+            <StyledMinusIcon />
+          </Button>
+          <Button borderStyle="squared" variant="outlined" onClick={incrementAmount}>
+            <StyledPlusIcon />
+          </Button>
         </CounterContainer>
       </Content>
     </Container>
@@ -25,16 +30,14 @@ const BasketItem = ({ title, price, amount }) => {
 
 export default BasketItem;
 
-const StyledMinusIcon= styled(MinusIcon)`
-display: flex;
-align-items: center;
-`
-const StyledPlusIcon= styled(IconPlus)`
-display: flex;
-align-items: center;
-`
-
-
+const StyledMinusIcon = styled(MinusIcon)`
+  display: flex;
+  align-items: center;
+`;
+const StyledPlusIcon = styled(IconPlus)`
+  display: flex;
+  align-items: center;
+`;
 
 const Container = styled.div`
   padding: 24px 0;
@@ -71,12 +74,11 @@ const PriceAndAmountContainer = styled.div`
 `;
 
 const CounterContainer = styled.div`
-display: flex;
-gap: 14px;
+  display: flex;
+  gap: 14px;
 `;
 const Content = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

@@ -55,7 +55,7 @@ const Modal = ({children,onClose}) => {
     <>
       {createPortal(<Backdrop onClose={onClose} />,backdropRoot)}
       {createPortal(<ModalContent>{children}</ModalContent>,modalOverlayRoot)}
-    </>
+    </> 
   );
 };
 

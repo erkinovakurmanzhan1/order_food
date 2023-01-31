@@ -1,51 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { BasketContext } from "../../store/BasketContext";
 import Modal from "../UI/Modal";
 import BasketItem from "./BasketItem";
 import TotalAmount from "./TotalAmount";
 
-const Basket = () => {
-  const items = [
-    {
-      title: "Sushi",
-      price: 22.99,
-      id: "1",
-      amount: 32,
-    },
-    {
-      title: "SusSchnitzel",
-      price: 16.01,
-      id: "2",
-      amount: 2,
-    },
-    {
-      title: "Barbecue Burger",
-      price: 12.99,
-      id: "3",
-      amount: 4,
-    },
-    {
-      title: "Green Bowl",
-      price: 19.99,
-      id: "4",
-      amount: 3,
-    },
-  ];
+const Basket = ({ onClose }) => {
+  const { items, updateBasketItem, deleteBasketItem } =
+    useContext(BasketContext);
+
+  const decrementAmount = (id, amount) => {
+    if (amount > 1) {
+      updateBasketItem({ amount: amount - 1, id: id });
+    } else {
+      deleteBasketItem(id);
+    }
+  };
+  const incrementAmount = (id, amount) => {
+    updateBasketItem({ amount: amount + 1, id: id });
+  };
+
+  const getTotalPrice = () => {
+    return items.reduce((sum, { price, amount }) => sum + amount * price, 0);
+  };
 
   return (
-    <Modal onClose={() => {}}>
+    <Modal onClose={onClose}>
       <Content>
-        {items.length ? <FixedHeightConteiner>
-        {items.map((item) => {
-         return <BasketItem
-            key={item.id}
-            title={item.title}
-            price={item.price}
-            amount={item.amount}
-          />;
-        })}
-        </FixedHeightConteiner> : null}
-        <TotalAmount price={200.5034} onClose={() => {}} onOrder={() => {}} />
+        {items.length ? (
+          <FixedHeightConteiner>
+            {items.map((item) => {
+              return (
+                <BasketItem
+                  incrementAmount={() => incrementAmount(item._id, item.amount)}
+                  decrementAmount={() => decrementAmount(item._id, item.amount)}
+                  key={item._id}
+                  title={item.title}
+                  price={item.price}
+                  amount={item.amount}
+                />
+              );
+            })}
+          </FixedHeightConteiner>
+        ) : null}
+        <TotalAmount
+          price={getTotalPrice()}
+          onClose={onClose}
+          onOrder={() => {}}
+        />
       </Content>
     </Modal>
   );
@@ -61,4 +63,4 @@ const Content = styled.div`
 const FixedHeightConteiner = styled.div`
   max-height: 228px;
   overflow-y: scroll;
-`
+`;

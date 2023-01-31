@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../UI/Button";
 import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
 import styled from "styled-components";
+import { BasketContext } from "../../../store/BasketContext";
 
-const MealItemForm = ({id}) => {
+const MealItemForm = ({ id, title, price }) => {
+  const { addToBasket } = useContext(BasketContext);
+
+  const [amount, setAmount] = useState(1);
+
+  const amountChangeHandler = (event) => {
+    setAmount(+event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const basketItem = {
+      id,
+      price,
+      title,
+      amount,
+    };
+    addToBasket(basketItem);
+  };
   return (
-    <StyledForm>
+    <StyledForm onSubmit={submitHandler}>
       <Container>
         <label htmlFor={id}>Amount</label>
-        <input type="number" id={id} min={1} max={5} defaultValue={1}/>
+        <input
+          value={amount}
+          onChange={amountChangeHandler}
+          type="number"
+          id={id}
+          min={1}
+          max={5}
+        />
       </Container>
       <Button>
         <StyledIcon />
-      Add
+        Add
       </Button>
     </StyledForm>
   );
@@ -21,7 +48,7 @@ const MealItemForm = ({id}) => {
 export default MealItemForm;
 const StyledIcon = styled(PlusIcon)`
   margin-right: 10px;
-  `;
+`;
 
 const Container = styled.div`
   margin-bottom: 12px;
@@ -43,7 +70,6 @@ const Container = styled.div`
     text-align: center;
     line-height: 24px;
     padding: 4px 12px;
-
   }
 `;
 const StyledForm = styled.form`
