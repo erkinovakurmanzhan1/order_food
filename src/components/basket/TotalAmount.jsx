@@ -40,7 +40,6 @@ const Price = styled.p`
 const InfoContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    /* padding-top: 24px; */
 `
 
 const ActionButtonsContainer=styled.div`

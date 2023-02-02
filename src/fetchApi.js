@@ -20,6 +20,6 @@ export const fetchApi = async (path, options = {}) => {
 
     return result;
   } catch (error) {
-    throw error;
+    throw error; 
   }
 };

@@ -1,6 +1,5 @@
+import { memo } from "react";
 import styled from "styled-components";
-// import Button from "../../UI/Button";
-// import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
 import MealItemForm from "./MealItemForm";
 
 const MealItem = ({ meal }) => {

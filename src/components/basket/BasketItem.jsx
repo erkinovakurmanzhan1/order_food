@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import { ReactComponent as MinusIcon } from "../../assets/icons/minus.svg";
 import { ReactComponent as IconPlus } from "../../assets/icons/plusIcon.svg";
 
 const BasketItem = ({ title, price, amount,incrementAmount,decrementAmount }) => {
-  
   
   return (
     <Container>

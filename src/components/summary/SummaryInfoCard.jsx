@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 const SummaryInfoCard = () => {
@@ -17,7 +17,7 @@ const SummaryInfoCard = () => {
   );
 };
 
-export default SummaryInfoCard;
+export default memo(SummaryInfoCard);
 
 const Card = styled.div`
 max-width: 53.375rem;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BasketContext } from "../../store/BasketContext";
 import BasketButton from "./BasketButton";
