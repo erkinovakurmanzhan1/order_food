@@ -8,7 +8,6 @@ const Summary = () => {
         <Container>
             <ImgStyled src={BackGroundImg} alt="summary" />
             <SummaryInfoCard/>
-            
         </Container>
     );
 };

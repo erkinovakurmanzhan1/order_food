@@ -1,18 +1,22 @@
-import React, {useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { BasketContext } from "../../store/BasketContext";
+import { getBasket } from "../../store/basket/basketReducer";
 import BasketButton from "./BasketButton";
 
 const Header = ({ onShowBasket }) => {
-  const { items } = useContext(BasketContext);
+  const items = useSelector((state) => state.basket.items);
+  const dispatch = useDispatch();
+  const [animationClass, setAnimationClass] = useState("");
 
-  const [animationClass, setAnimationClass] = useState();
+  useEffect(() => {
+    dispatch(getBasket());
+  }, [dispatch]);
 
   const calculateTotalAmount = () => {
     const sum = items.reduce((s, item) => {
       return s + item.amount;
     }, 0);
-
 
     return sum;
   };
@@ -20,14 +24,14 @@ const Header = ({ onShowBasket }) => {
   useEffect(() => {
     setAnimationClass("bump");
 
-   const id= setTimeout(()=>{
-      setAnimationClass('')
-    },300)
+    const id = setTimeout(() => {
+      setAnimationClass("");
+    }, 300);
 
-    return ()=>{
-      clearTimeout(id)
-    }
-  },[items]);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [items]);
 
   return (
     <Container>
