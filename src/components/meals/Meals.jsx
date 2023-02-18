@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { fetchApi } from "../../fetchApi";
-import { getMeals } from "../../store/meals/mealsReducer";
+import { getMeals } from "../../store/meals/mealsSlice";
 import MealItem from "./meal-item/MealItem";
 
 const Meals = () => {
   const dispatch = useDispatch();
   const { meals, error, isLoading } = useSelector((state) => state.meals);
-  // const [meals, setMeals] = useState([]);
-  // const [error, setError] = useState("");
-  // const [isLoading,setLoading]=useState(true)
-
-  // const getMeals = async () => {
-  //   try {
-  //     setLoading(true)
-  //     const response = await fetchApi("foods");
-  //     setMeals(response.data);
-  //     setLoading(false)
-  //   } catch (error) {
-  //     console.log(error);
-  //     setError("Failed to load meals");
-  //   }
-  // };
 
   useEffect(() => {
     dispatch(getMeals());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Card>
@@ -39,7 +23,7 @@ const Meals = () => {
   );
 };
 
-export default Meals;
+export default memo(Meals);
 
 const Card = styled.div`
   padding: 40px 40px 36px 40px;
