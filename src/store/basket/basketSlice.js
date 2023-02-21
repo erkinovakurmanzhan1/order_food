@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchApi } from "../../fetchApi";
 
-export const basketActionTypes = {
-  ADD_ITEM_SUCCESS: "ADD_ITEM_SUCCESS",
-  GET_BASKET_SUCCESS: "GET_BASKET_SUCCESS",
-};
+// export const basketActionTypes = {
+//   ADD_ITEM_SUCCESS: "ADD_ITEM_SUCCESS",
+//   GET_BASKET_SUCCESS: "GET_BASKET_SUCCESS",
+// };
 
 const initialState = {
   items: [],
@@ -85,7 +85,6 @@ export const getBasket = createAsyncThunk(
   }
 );
 
-
 //addToBasket
 
 export const addToBasket = createAsyncThunk(
@@ -109,7 +108,7 @@ export const deleteBasketItem = createAsyncThunk(
   "basket/deleteBasket",
   async (id, { dispatch, rejectWithValue }) => {
     try {
-      const { data } = await fetchApi(`basketitem/${id}/delete`, {
+      const { data } = await fetch(`basketitem/${id}/delete`, {
         method: "DELETE",
       });
       dispatch(getBasket());
@@ -133,6 +132,24 @@ export const updateBasketItem = createAsyncThunk(
       return data.items;
     } catch (error) {
       return rejectWithValue("something went wrong update");
+    }
+  }
+);
+
+export const submitOrder = createAsyncThunk(
+  "basket/submitOrder",
+  async ({ orderData }, { dispatch, rejectWithValue }) => {
+    try {
+       await fetch(
+        `https://jsonplaceholder.typicode.com/posts`,
+        {
+          method: "POST",
+          body: orderData,
+        }
+      );
+      dispatch(getBasket());
+    } catch (error) {
+      return rejectWithValue("something went wrong submitorder");
     }
   }
 );

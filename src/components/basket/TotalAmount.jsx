@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 
-const TotalAmount = ({price,onClose,onOrder}) => {
-const orderButton =price > 0 && <Button onClick={onOrder}>Order</Button>
+const TotalAmount = ({ price, onClose, onOrder }) => {
+  const orderButton = price > 0 && <Button onClick={onOrder} >Order</Button>;
 
-const fixedPrice = price.toFixed(2)
+  const fixedPrice = price.toFixed(2);
   return (
     <div>
       <InfoContainer>
@@ -13,7 +13,9 @@ const fixedPrice = price.toFixed(2)
         <Price>${fixedPrice}</Price>
       </InfoContainer>
       <ActionButtonsContainer>
-        <Button onClick={onClose} variant="outlined">Close</Button>
+        <Button onClick={onClose} variant="outlined">
+          Close
+        </Button>
         {orderButton}
       </ActionButtonsContainer>
     </div>
