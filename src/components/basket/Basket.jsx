@@ -8,7 +8,6 @@ import {
   updateBasketItem,
 } from "../../store/basket/basketSlice";
 import { uiSLiceActions } from "../../store/ui/uiSlice";
-// import Modal from "../UI/Modal";
 import BasketItem from "./BasketItem";
 import TotalAmount from "./TotalAmount";
 
@@ -60,8 +59,6 @@ const Basket = ({ onClose }) => {
       <Modal
         open={onClose}
         // onClose={onClose}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
       >
         <Container>
           <Content>
@@ -92,9 +89,6 @@ const Basket = ({ onClose }) => {
             />
           </Content>
         </Container>
-        {/* <Modal onClose={onClose}> */}
-
-        {/* </Modal> */}
       </Modal>
     </>
   );

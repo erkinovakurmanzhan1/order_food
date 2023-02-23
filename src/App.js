@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback,  useState } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Basket from "./components/basket/Basket";
@@ -8,6 +8,8 @@ import Summary from "./components/summary/Summary";
 import SnackBarModal from "./components/UI/SnackBar";
 import { store } from "./store";
 import { uiSLiceActions } from "./store/ui/uiSlice";
+
+
 
 function AppContent() {
   const dispatch = useDispatch();
@@ -19,10 +21,12 @@ function AppContent() {
     setBasketVisisble((prevState) => !prevState);
   }, []);
 
+ 
   return (
     <>
       <Header onShowBasket={showBasketHandler} />
       <Content>
+        
         <Summary />
         <Meals />
         {isBasketVisible && <Basket onClose={showBasketHandler} />}

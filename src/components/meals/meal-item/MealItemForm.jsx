@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import Button from "../../UI/Button";
-import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
-import styled from "styled-components";
+// import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
+import styledComponent from "styled-components";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../../store/basket/basketSlice";
+import { TextField } from "@mui/material";
+import { styled } from "@mui/system";
+import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
+import ButtonMui from "../../UI/ButtonMui";
 
 const MealItemForm = ({ id, title, price }) => {
   const dispatch = useDispatch();
@@ -25,32 +28,62 @@ const MealItemForm = ({ id, title, price }) => {
     dispatch(addToBasket(basketItem));
   };
   return (
-    <StyledForm onSubmit={submitHandler}>
+    <StyledForm >
       <Container>
         <label htmlFor={id}>Amount</label>
-        <input
-          value={amount}
+        <StyledTextfield
           onChange={amountChangeHandler}
-          type="number"
           id={id}
-          min={1}
-          max={5}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          size="small"
+          value={amount}
         />
       </Container>
-      <Button>
-        <StyledIcon />
+      <StyledAddButton onClick={submitHandler}>
+        <AddTwoToneIcon />
         Add
-      </Button>
+      </StyledAddButton>
     </StyledForm>
   );
 };
 
 export default MealItemForm;
-const StyledIcon = styled(PlusIcon)`
-  margin-right: 10px;
-`;
 
-const Container = styled.div`
+const StyledAddButton = styled(ButtonMui)(() => ({
+  "&": {
+    background: "rgba(138, 43, 6, 1)",
+    border: "1px solid #7e2a0a",
+    color: "#FFFF",
+    borderRadius: "24px",
+    width: "65%",
+    padding: "9px",
+    marginLeft: "3.5rem",
+  },
+  "&:hover": {
+    border: "none",
+
+    background: "#7e2a0a",
+    color: "white",
+  },
+  "&:active": {
+    background: "#993108",
+  },
+}));
+
+const StyledTextfield = styled(TextField)(() => ({
+  "&": {
+    width: "70px",
+  },
+  "& .MuiOutlinedInput-input": {
+    padding: "4px 10px",
+    fontSize: "14px",
+  },
+}));
+
+const Container = styledComponent.div`
   margin-bottom: 12px;
   label {
     font-weight: 600;
@@ -58,6 +91,7 @@ const Container = styled.div`
     line-height: 27px;
     color: #222222;
     margin-right: 20px;
+    
   }
 
   input {
@@ -72,7 +106,7 @@ const Container = styled.div`
     padding: 4px 12px;
   }
 `;
-const StyledForm = styled.form`
+const StyledForm = styledComponent.form`
   display: flex;
   flex-direction: column;
 `;

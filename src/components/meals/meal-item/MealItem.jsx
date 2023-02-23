@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styledComponent from "styled-components";
 import MealItemForm from "./MealItemForm";
 
 const MealItem = ({ meal }) => {
@@ -22,7 +22,7 @@ const MealItem = ({ meal }) => {
 
 export default MealItem;
 
-const Container = styled.li`
+const Container = styledComponent.li`
   display: flex;
   list-style: none;
   justify-content: space-between;
@@ -33,7 +33,7 @@ const Container = styled.li`
     border: none;
   }
 `;
-const StyledItemInfo = styled.div`
+const StyledItemInfo = styledComponent.div`
   margin-bottom: 20px;
   p {
     font-style: italic;
@@ -47,7 +47,7 @@ const StyledItemInfo = styled.div`
     margin-bottom: 0;
   }
 `;
-const StyledTitle = styled.h4`
+const StyledTitle = styledComponent.h4`
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
@@ -56,7 +56,7 @@ const StyledTitle = styled.h4`
   margin-top: 4px;
 `;
 
-const StyledPrice = styled.span`
+const StyledPrice = styledComponent.span`
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
@@ -64,4 +64,4 @@ const StyledPrice = styled.span`
   margin-top: 4px;
 `;
 
-const StyledInput = styled.div``;
+const StyledInput = styledComponent.div``;

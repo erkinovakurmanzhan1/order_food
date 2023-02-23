@@ -1,46 +1,48 @@
 import React from "react";
-import styled from "styled-components";
-import { ReactComponent as BasketIcon } from "../../assets/icons/basket-icon.svg";
+import styledComponent from "styled-components";
+import AddShoppingCartTwoToneIcon from "@mui/icons-material/AddShoppingCartTwoTone";
+import ButtonMui from "../UI/ButtonMui";
+import { styled } from "@mui/system";
 
-const BasketButton = ({ count ,...rest}) => {
+const BasketButton = ({ count, ...rest }) => {
   return (
-    <BasketButtonSTyled {...rest} >
-      <BasketIcon />
+    <StyledBasketButton {...rest}>
+      <AddShoppingCartTwoToneIcon />
       <StyledTitle>Your cart</StyledTitle>
       <StyledCount id="counter">{count || 0}</StyledCount>
-    </BasketButtonSTyled>
+    </StyledBasketButton>
   );
 };
 
 export default BasketButton;
 
-const BasketButtonSTyled = styled.button`
-background: #5A1F08;
-  border-radius: 20px;
-  padding: 10px 32px;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffff;
-  display: flex;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  
-  &:hover {
-    background-color: #2c0f08;
-  }
+const StyledBasketButton = styled(ButtonMui)(() => ({
+  "&": {
+    background: "#5A1F08",
+  },
+  "&:hover": {
+    background: "#2c0f08",
+  },
+  "&:hover > #counter": {
+    background: "#5f1c0b",
+  },
+  borderRadius: "20px",
+  padding: "10px 32px",
+  fontWeight: "600",
+  fontSize: "16px",
+  lineHeight: "24px",
+  textColor: "#ffff",
+  border: "none",
+  cursor: "pointer",
+}));
 
-  &:hover > #counter {
-    background-color: #5f1c0b;
-  }
-`;
 
-const StyledTitle = styled.span`
+
+const StyledTitle = styledComponent.span`
   margin-left: 12px;
   margin-right: 24px;
 `;
-const StyledCount = styled.span`
+const StyledCount = styledComponent.span`
   background: #8a2b06;
   border-radius: 30px;
   padding: 4px 20px;
