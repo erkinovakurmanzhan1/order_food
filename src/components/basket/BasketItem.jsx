@@ -1,5 +1,4 @@
 import styledComponent from "styled-components";
-import { ReactComponent as MinusIcon } from "../../assets/icons/minus.svg";
 import ButtonMui from "../UI/ButtonMui";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -44,19 +43,20 @@ const BasketItem = ({
 
 export default BasketItem;
 
-const StyledIconsButton = styled(ButtonMui)(() => ({
+const StyledIconsButton = styled(ButtonMui)(({ theme }) => ({
   "&": {
-    border: "1px solid #7e2a0a",
-    color: "#7e2a0a",
+    border: `1px solid${theme.palette.primary.dark}`,
+
+    color: theme.palette.primary.dark,
   },
   "&:hover": {
     border: "none",
+    background: theme.palette.primary.dark,
 
-    background: "#7e2a0a",
-    color: "white",
+    color: "#ffff",
   },
   "&:active": {
-    background: "#993108",
+    background: theme.palette.primary.main,
   },
 }));
 
@@ -69,7 +69,6 @@ const Title = styledComponent.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
-  color: #222222;
 `;
 const Price = styledComponent.p`
   font-weight: 600;
@@ -83,7 +82,6 @@ const Amount = styledComponent.span`
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #222222;
   padding: 6px 14px;
   display: block;
 `;
@@ -98,7 +96,7 @@ const CounterContainer = styledComponent.div`
   display: flex;
   gap: 14px;
 `;
-const Content = styled.div`
+const Content = styledComponent.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

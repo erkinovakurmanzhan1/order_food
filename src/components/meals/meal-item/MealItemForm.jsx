@@ -28,7 +28,7 @@ const MealItemForm = ({ id, title, price }) => {
     dispatch(addToBasket(basketItem));
   };
   return (
-    <StyledForm >
+    <StyledForm>
       <Container>
         <label htmlFor={id}>Amount</label>
         <StyledTextfield
@@ -52,10 +52,11 @@ const MealItemForm = ({ id, title, price }) => {
 
 export default MealItemForm;
 
-const StyledAddButton = styled(ButtonMui)(() => ({
+const StyledAddButton = styled(ButtonMui)(({ theme }) => ({
   "&": {
-    background: "rgba(138, 43, 6, 1)",
-    border: "1px solid #7e2a0a",
+    background: theme.palette.primary.dark,
+
+    border: `1px solid${theme.palette.primary.light}`,
     color: "#FFFF",
     borderRadius: "24px",
     width: "65%",
@@ -65,11 +66,11 @@ const StyledAddButton = styled(ButtonMui)(() => ({
   "&:hover": {
     border: "none",
 
-    background: "#7e2a0a",
+    background: theme.palette.primary.light,
     color: "white",
   },
   "&:active": {
-    background: "#993108",
+    background: theme.palette.primary.main,
   },
 }));
 

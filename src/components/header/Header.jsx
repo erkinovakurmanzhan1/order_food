@@ -1,13 +1,21 @@
+import { AppBar, Box, CardHeader } from "@mui/material";
+import { styled } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import styledComponent from "styled-components";
+// import { getTheme } from "../../lib/constants/theme";
 import { getBasket } from "../../store/basket/basketSlice";
+import { uiSLiceActions } from "../../store/ui/uiSlice";
+import ButtonMui from "../UI/ButtonMui";
 import BasketButton from "./BasketButton";
 
 const Header = ({ onShowBasket }) => {
   const dispatch = useDispatch();
 
   const { items } = useSelector((state) => state.basket);
+
+  const themeMode = useSelector((state) => state.ui.themeMode);
+  console.log(themeMode);
   const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
@@ -34,56 +42,58 @@ const Header = ({ onShowBasket }) => {
     };
   }, [items]);
 
+  const themeChangeHandler = () => {
+    const theme = themeMode === "light" ? "dark" : "light";
+    dispatch(uiSLiceActions.changeTheme(theme));
+  };
+
   return (
-    <Container>
-      <Logo>ReactMeals</Logo>
-      <BasketButton
-        className={animationClass}
-        onClick={onShowBasket}
-        count={calculateTotalAmount()}
-      />
-    </Container>
+    <>
+      <Container>
+        <Logo>ReactMeals</Logo>
+        <BasketButton
+          className={animationClass}
+          onClick={onShowBasket}
+          count={calculateTotalAmount()}
+        />
+        <ThemeBtnStyled
+          onClick={themeChangeHandler}
+          className={animationClass}
+          count={calculateTotalAmount}
+        >
+          {themeMode === "light" ? "🌙 " : " ☀️"}
+        </ThemeBtnStyled>
+      </Container>
+    </>
   );
 };
 
 export default Header;
 
-const Container = styled.header`
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background-color: #8a2b06;
-  width: 100%;
-  height: 101px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 120px;
-  padding-right: 120px;
+const ThemeBtnStyled = styled(ButtonMui)(({ theme }) => ({
+  "&": {
+    background: theme.palette.primary.dark,
+    width: "100px",
+    height: "50px",
+  },
+}));
 
-  .bump {
-    animation: bump 300ms ease-out;
-  }
+const Container = styled(AppBar)(({ theme }) => ({
+  "&": {
+    background: theme.palette.primary.dark,
+    width: "100%",
+    height: " 101px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: "120px",
+    paddingRight: "120px",
 
-  @keyframes bump {
-    0% {
-      transform: scale(1);
-    }
-    10% {
-      transform: scale(0.9);
-    }
-    30% {
-      transform: scale(1.1);
-    }
-    50% {
-      transform: scale(1.15);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-`;
-const Logo = styled.p`
+  },
+}));
+
+const Logo = styledComponent.p`
   font-weight: 600;
   font-size: 38px;
   line-height: 57px;

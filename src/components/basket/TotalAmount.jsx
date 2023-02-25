@@ -27,45 +27,43 @@ const TotalAmount = ({ price, onClose, onOrder }) => {
 
 export default TotalAmount;
 
-const StyledCLoseButtons = styled(ButtonMui)(() => ({
+const StyledCLoseButtons = styled(ButtonMui)(({ theme }) => ({
   "&": {
     padding: "7px 14px",
     background: "none",
-    border: "1px solid #7e2a0a",
+    border: `1px solid${theme.palette.primary.dark}`,
     borderRadius: "20px",
-    color: "#7e2a0a",
-
+    color: theme.palette.primary.dark,
   },
   "&:hover": {
     border: "none",
-    background: "#7e2a0a",
+    background: theme.palette.primary.light,
     color: "white",
   },
   "&:active": {
-    background: "#993108",
+    background: theme.palette.primary.main,
   },
 }));
-const StyledOrderButtons = styled(ButtonMui)(() => ({
+const StyledOrderButtons = styled(ButtonMui)(({ theme }) => ({
   "&": {
-    background: "#7e2a0a",
-    border: "2px solid #7e2a0a",
+    background: theme.palette.primary.dark,
+    border: `2px solid${theme.palette.primary.dark}`,
     borderRadius: "20px",
     color: "#FFFF",
   },
   "&:hover": {
     border: "none",
-    background: "#7e2a0a",
+    background: theme.palette.primary.light,
     color: "white",
   },
   "&:active": {
-    background: "#993108",
+    background: theme.palette.primary.main,
   },
 }));
 const Label = styledComponent.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
-  color: #222222;
   margin: 0;
 `;
 

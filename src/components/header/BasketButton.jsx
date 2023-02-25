@@ -16,15 +16,15 @@ const BasketButton = ({ count, ...rest }) => {
 
 export default BasketButton;
 
-const StyledBasketButton = styled(ButtonMui)(() => ({
+const StyledBasketButton = styled(ButtonMui)(({ theme }) => ({
   "&": {
-    background: "#5A1F08",
+    background: theme.palette.primary.main,
   },
   "&:hover": {
-    background: "#2c0f08",
+    background: theme.palette.primary.dark,
   },
   "&:hover > #counter": {
-    background: "#5f1c0b",
+    background: theme.palette.primary.main,
   },
   borderRadius: "20px",
   padding: "10px 32px",
@@ -34,20 +34,42 @@ const StyledBasketButton = styled(ButtonMui)(() => ({
   textColor: "#ffff",
   border: "none",
   cursor: "pointer",
+
+  "&.bump": {
+    animation: "bump 300ms ease-out",
+  },
+
+  "@keyframes bump": {
+    "0%": {
+      transform: "scale(1)",
+    },
+    "10%": {
+      transform: "scale(0.9)",
+    },
+    "30%": {
+      transform: "scale(1.1)",
+    },
+    "50%": {
+      transform: "scale(1.15)",
+    },
+    "100%": {
+      transform: "scale(1)",
+    },
+  },
 }));
-
-
 
 const StyledTitle = styledComponent.span`
   margin-left: 12px;
   margin-right: 24px;
 `;
-const StyledCount = styledComponent.span`
-  background: #8a2b06;
-  border-radius: 30px;
-  padding: 4px 20px;
-  font-weight: 700;
-  font-size: 20p;
-  line-height: 27px;
-  color: #fff;
-`;
+const StyledCount = styled("span")(({ theme }) => ({
+  background: theme.palette.primary.dark,
+  borderRadius: "30px",
+  padding: "4px 20px",
+  fontWeight: "700",
+  fontSize: "20p",
+  lineHeight: "27px",
+  color: theme.palette.primary.constrastText,
+}))
+ 
+

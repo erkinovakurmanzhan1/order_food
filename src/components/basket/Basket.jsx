@@ -1,7 +1,8 @@
+import styled from "@emotion/styled";
 import { Modal } from "@mui/material";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import styledComponent from "styled-components";
 import {
   deleteBasketItem,
   submitOrder,
@@ -16,7 +17,7 @@ const Basket = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const decrementAmount = (id, amount) => {
-    if (amount > 1) {
+    if (amount > 0) {
       dispatch(updateBasketItem({ amount: amount - 1, id: id }));
     } else {
       dispatch(deleteBasketItem(id));
@@ -56,10 +57,7 @@ const Basket = ({ onClose }) => {
   };
   return (
     <>
-      <Modal
-        open={onClose}
-        // onClose={onClose}
-      >
+      <Modal open={onClose}>
         <Container>
           <Content>
             {items.length ? (
@@ -96,37 +94,38 @@ const Basket = ({ onClose }) => {
 
 export default Basket;
 
-const Content = styled.div`
+const Content = styledComponent.div`
   width: 100%;
   height: 100%;
   padding: 0 1rem 1.5rem 1rem;
 `;
-const FixedHeightConteiner = styled.div`
+const FixedHeightConteiner = styledComponent.div`
   max-height: 228px;
   overflow-y: scroll;
 `;
 
-const Container = styled.div`
-  position: fixed;
-  top: 20vh;
-  left: 5%;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
-  width: 40rem;
-  left: calc(50% - 20rem);
+const Container = styled("div")(({ theme }) => ({
+  position: "fixed",
+  top: "20vh",
+  left: "5%",
+  background: theme.palette.secondary.light,
+  color: theme.palette.primary.constrastText,
+  padding: "1rem",
+  borderRadius: "14px",
+  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
+  zIndex: "30",
+  animation: "slide-down 300ms ease-out forwards",
+  width: " 40rem",
+  left: "calc(50% - 20rem)",
 
-  @keyframes slide-down {
-    from {
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
+  "@keyframes slide-down": {
+    from: {
+      opacity: "0",
+      transform: "translateY(-3rem)",
+    },
+    to: {
+      opacity: " 1",
+      transform: "translateY(0)",
+    },
+  },
+}));

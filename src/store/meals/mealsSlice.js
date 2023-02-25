@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchApi } from "../../fetchApi";
+import { fetchApi } from "../../lib/fetchApi";
 
 // export const mealsActionTypes = {
 //   GET_MEALS_SUCCESS: "GET_MEALS_SUCCESS",

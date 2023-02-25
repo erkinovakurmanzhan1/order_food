@@ -1,7 +1,13 @@
 import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 
-const SnackBarModal = ({ isOpen, onClose, message, severity, autoHideDuration }) => {
+const SnackBarModal = ({
+  isOpen,
+  onClose,
+  message,
+  severity,
+  autoHideDuration,
+}) => {
   return (
     <div>
       <Snackbar

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchApi } from "../../fetchApi";
+import { fetchApi } from "../../lib/fetchApi";
 
 // export const basketActionTypes = {
 //   ADD_ITEM_SUCCESS: "ADD_ITEM_SUCCESS",
