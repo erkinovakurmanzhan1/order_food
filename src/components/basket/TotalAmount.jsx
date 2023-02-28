@@ -1,14 +1,14 @@
-import { styled } from "@mui/system";
-import React from "react";
-import styledComponent from "styled-components";
-import ButtonMui from "../UI/ButtonMui";
+import { styled } from '@mui/material/styles'
+import React from 'react'
+import styledComponent from 'styled-components'
+import ButtonMui from '../UI/ButtonMui'
 
 const TotalAmount = ({ price, onClose, onOrder }) => {
   const orderButton = price > 0 && (
     <StyledOrderButtons onClick={onOrder}>Order</StyledOrderButtons>
-  );
+  )
 
-  const fixedPrice = price.toFixed(2);
+  const fixedPrice = price.toFixed(2)
   return (
     <div>
       <InfoContainer>
@@ -22,50 +22,50 @@ const TotalAmount = ({ price, onClose, onOrder }) => {
         {orderButton}
       </ActionButtonsContainer>
     </div>
-  );
-};
+  )
+}
 
-export default TotalAmount;
+export default TotalAmount
 
 const StyledCLoseButtons = styled(ButtonMui)(({ theme }) => ({
-  "&": {
-    padding: "7px 14px",
-    background: "none",
+  '&': {
+    padding: '7px 14px',
+    background: 'none',
     border: `1px solid${theme.palette.primary.dark}`,
-    borderRadius: "20px",
+    borderRadius: '20px',
     color: theme.palette.primary.dark,
   },
-  "&:hover": {
-    border: "none",
+  '&:hover': {
+    border: 'none',
     background: theme.palette.primary.light,
-    color: "white",
+    color: 'white',
   },
-  "&:active": {
+  '&:active': {
     background: theme.palette.primary.main,
   },
-}));
+}))
 const StyledOrderButtons = styled(ButtonMui)(({ theme }) => ({
-  "&": {
+  '&': {
     background: theme.palette.primary.dark,
     border: `2px solid${theme.palette.primary.dark}`,
-    borderRadius: "20px",
-    color: "#FFFF",
+    borderRadius: '20px',
+    color: '#FFFF',
   },
-  "&:hover": {
-    border: "none",
+  '&:hover': {
+    border: 'none',
     background: theme.palette.primary.light,
-    color: "white",
+    color: 'white',
   },
-  "&:active": {
+  '&:active': {
     background: theme.palette.primary.main,
   },
-}));
+}))
 const Label = styledComponent.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
   margin: 0;
-`;
+`
 
 const Price = styledComponent.p`
   font-weight: 600;
@@ -73,15 +73,15 @@ const Price = styledComponent.p`
   line-height: 33px;
   color: #8a2b06;
   margin: 0;
-`;
+`
 const InfoContainer = styledComponent.div`
     display: flex;
     justify-content: space-between;
-`;
+`
 
 const ActionButtonsContainer = styledComponent.div`
     display: flex;
     justify-content: flex-end;
     margin-top: 24px;
     gap: 16px;
-`;
+`

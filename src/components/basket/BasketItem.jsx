@@ -1,9 +1,9 @@
-import styledComponent from "styled-components";
-import ButtonMui from "../UI/ButtonMui";
-import AddIcon from "@mui/icons-material/Add";
+import styledComponent from 'styled-components'
+import AddIcon from '@mui/icons-material/Add'
 
-import RemoveIcon from "@mui/icons-material/Remove";
-import styled from "@emotion/styled";
+import RemoveIcon from '@mui/icons-material/Remove'
+import styled from '@emotion/styled'
+import ButtonMui from '../UI/ButtonMui'
 
 const BasketItem = ({
   title,
@@ -38,44 +38,44 @@ const BasketItem = ({
         </CounterContainer>
       </Content>
     </Container>
-  );
-};
+  )
+}
 
-export default BasketItem;
+export default BasketItem
 
 const StyledIconsButton = styled(ButtonMui)(({ theme }) => ({
-  "&": {
+  '&': {
     border: `1px solid${theme.palette.primary.dark}`,
 
     color: theme.palette.primary.dark,
   },
-  "&:hover": {
-    border: "none",
+  '&:hover': {
+    border: 'none',
     background: theme.palette.primary.dark,
 
-    color: "#ffff",
+    color: '#ffff',
   },
-  "&:active": {
+  '&:active': {
     background: theme.palette.primary.main,
   },
-}));
+}))
 
 const Container = styledComponent.div`
   padding: 24px 0;
   width: 100%;
-`;
+`
 const Title = styledComponent.p`
   margin: 0 0 12px 0;
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
-`;
+`
 const Price = styledComponent.p`
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
   color: #ad5502;
-`;
+`
 const Amount = styledComponent.span`
   border: 1px solid #d6d6d6;
   border-radius: 6px;
@@ -84,20 +84,20 @@ const Amount = styledComponent.span`
   line-height: 24px;
   padding: 6px 14px;
   display: block;
-`;
+`
 const PriceAndAmountContainer = styledComponent.div`
   display: flex;
   align-items: center;
   width: 153px;
   justify-content: space-between;
-`;
+`
 
 const CounterContainer = styledComponent.div`
   display: flex;
   gap: 14px;
-`;
+`
 const Content = styledComponent.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`

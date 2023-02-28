@@ -1,5 +1,5 @@
-import styledComponent from "styled-components";
-import MealItemForm from "./MealItemForm";
+import styledComponent from 'styled-components'
+import MealItemForm from './MealItemForm'
 
 const MealItem = ({ meal }) => {
   return (
@@ -17,10 +17,10 @@ const MealItem = ({ meal }) => {
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default MealItem;
+export default MealItem
 
 const Container = styledComponent.li`
   display: flex;
@@ -32,7 +32,7 @@ const Container = styledComponent.li`
   :last-child() {
     border: none;
   }
-`;
+`
 const StyledItemInfo = styledComponent.div`
   margin-bottom: 20px;
   p {
@@ -46,7 +46,7 @@ const StyledItemInfo = styledComponent.div`
   :last-child {
     margin-bottom: 0;
   }
-`;
+`
 const StyledTitle = styledComponent.h4`
   font-weight: 600;
   font-size: 18px;
@@ -54,7 +54,7 @@ const StyledTitle = styledComponent.h4`
   color: #222222;
   margin: 0;
   margin-top: 4px;
-`;
+`
 
 const StyledPrice = styledComponent.span`
   font-weight: 700;
@@ -62,6 +62,6 @@ const StyledPrice = styledComponent.span`
   line-height: 30px;
   color: #ad5502;
   margin-top: 4px;
-`;
+`
 
-const StyledInput = styledComponent.div``;
+const StyledInput = styledComponent.div``

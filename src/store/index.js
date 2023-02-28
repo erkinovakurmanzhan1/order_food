@@ -1,9 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-// import { applyMiddleware, combineReducers, createStore } from "redux";
-// import thunk from "redux-thunk";
-import { basketSlice } from "./basket/basketSlice";
-import { mealsSlice } from "./meals/mealsSlice";
-import { uiSlice } from "./ui/uiSlice";
+import { configureStore } from '@reduxjs/toolkit'
+
+import { basketSlice } from './basket/basket.slice'
+import { mealsSlice } from './meals/meals.slice'
+import { uiSlice } from './ui/ui.slice'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +10,4 @@ export const store = configureStore({
     [basketSlice.name]: basketSlice.reducer,
     [uiSlice.name]: uiSlice.reducer,
   },
-});
-
-// export const store = createStore(rootReducer, applyMiddleware(thunk));
+})

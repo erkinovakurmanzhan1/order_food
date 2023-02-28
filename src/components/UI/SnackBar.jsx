@@ -1,5 +1,5 @@
-import { Alert, Snackbar } from "@mui/material";
-import React from "react";
+import { Alert, Snackbar } from '@mui/material'
+import React from 'react'
 
 const SnackBarModal = ({
   isOpen,
@@ -14,14 +14,14 @@ const SnackBarModal = ({
         open={isOpen}
         autoHideDuration={autoHideDuration || 4000}
         onClose={onClose}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <Alert severity={severity} onClose={onClose} sx={{ width: "100%" }}>
+        <Alert severity={severity} onClose={onClose} sx={{ width: '100%' }}>
           {message}
         </Alert>
       </Snackbar>
     </div>
-  );
-};
+  )
+}
 
-export default SnackBarModal;
+export default SnackBarModal

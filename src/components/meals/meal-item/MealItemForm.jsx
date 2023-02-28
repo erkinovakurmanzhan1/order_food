@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 // import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
-import styledComponent from "styled-components";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../../../store/basket/basketSlice";
-import { TextField } from "@mui/material";
-import { styled } from "@mui/system";
-import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
-import ButtonMui from "../../UI/ButtonMui";
+import styledComponent from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { TextField } from '@mui/material'
+import { styled } from '@mui/system'
+import AddTwoToneIcon from '@mui/icons-material/AddTwoTone'
+import ButtonMui from '../../UI/ButtonMui'
+import { addToBasket } from '../../../store/basket/thunks'
 
 const MealItemForm = ({ id, title, price }) => {
-  const dispatch = useDispatch();
-  const [amount, setAmount] = useState(1);
+  const dispatch = useDispatch()
+  const [amount, setAmount] = useState(1)
 
   const amountChangeHandler = (event) => {
-    setAmount(+event.target.value);
-  };
+    setAmount(+event.target.value)
+  }
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const basketItem = {
       id,
       price,
       title,
       amount,
-    };
-    dispatch(addToBasket(basketItem));
-  };
+    }
+    dispatch(addToBasket(basketItem))
+  }
   return (
     <StyledForm>
       <Container>
@@ -47,42 +47,42 @@ const MealItemForm = ({ id, title, price }) => {
         Add
       </StyledAddButton>
     </StyledForm>
-  );
-};
+  )
+}
 
-export default MealItemForm;
+export default MealItemForm
 
 const StyledAddButton = styled(ButtonMui)(({ theme }) => ({
-  "&": {
+  '&': {
     background: theme.palette.primary.dark,
 
     border: `1px solid${theme.palette.primary.light}`,
-    color: "#FFFF",
-    borderRadius: "24px",
-    width: "65%",
-    padding: "9px",
-    marginLeft: "3.5rem",
+    color: '#FFFF',
+    borderRadius: '24px',
+    width: '65%',
+    padding: '9px',
+    marginLeft: '3.5rem',
   },
-  "&:hover": {
-    border: "none",
+  '&:hover': {
+    border: 'none',
 
     background: theme.palette.primary.light,
-    color: "white",
+    color: 'white',
   },
-  "&:active": {
+  '&:active': {
     background: theme.palette.primary.main,
   },
-}));
+}))
 
 const StyledTextfield = styled(TextField)(() => ({
-  "&": {
-    width: "70px",
+  '&': {
+    width: '70px',
   },
-  "& .MuiOutlinedInput-input": {
-    padding: "4px 10px",
-    fontSize: "14px",
+  '& .MuiOutlinedInput-input': {
+    padding: '4px 10px',
+    fontSize: '14px',
   },
-}));
+}))
 
 const Container = styledComponent.div`
   margin-bottom: 12px;
@@ -106,8 +106,8 @@ const Container = styledComponent.div`
     line-height: 24px;
     padding: 4px 12px;
   }
-`;
+`
 const StyledForm = styledComponent.form`
   display: flex;
   flex-direction: column;
-`;
+`
