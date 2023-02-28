@@ -38,7 +38,6 @@ const StyledCLoseButtons = styled(ButtonMui)(({ theme }) => ({
   '&:hover': {
     border: 'none',
     background: theme.palette.primary.light,
-    color: 'white',
   },
   '&:active': {
     background: theme.palette.primary.main,
@@ -46,6 +45,7 @@ const StyledCLoseButtons = styled(ButtonMui)(({ theme }) => ({
 }))
 const StyledOrderButtons = styled(ButtonMui)(({ theme }) => ({
   '&': {
+    padding: '7px 14px',
     background: theme.palette.primary.dark,
     border: `2px solid${theme.palette.primary.dark}`,
     borderRadius: '20px',

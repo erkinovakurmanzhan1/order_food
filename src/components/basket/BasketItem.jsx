@@ -1,6 +1,5 @@
 import styledComponent from 'styled-components'
 import AddIcon from '@mui/icons-material/Add'
-
 import RemoveIcon from '@mui/icons-material/Remove'
 import styled from '@emotion/styled'
 import ButtonMui from '../UI/ButtonMui'
@@ -22,14 +21,14 @@ const BasketItem = ({
         </PriceAndAmountContainer>
         <CounterContainer>
           <StyledIconsButton
-            borderStyle="squared"
+            borderstyle="squared"
             variant="outlined"
             onClick={decrementAmount}
           >
             <RemoveIcon />
           </StyledIconsButton>
           <StyledIconsButton
-            borderStyle="squared"
+            borderstyle="squared"
             variant="outlined"
             onClick={incrementAmount}
           >
@@ -46,14 +45,13 @@ export default BasketItem
 const StyledIconsButton = styled(ButtonMui)(({ theme }) => ({
   '&': {
     border: `1px solid${theme.palette.primary.dark}`,
+    background: 'none',
 
     color: theme.palette.primary.dark,
   },
   '&:hover': {
     border: 'none',
     background: theme.palette.primary.dark,
-
-    color: '#ffff',
   },
   '&:active': {
     background: theme.palette.primary.main,

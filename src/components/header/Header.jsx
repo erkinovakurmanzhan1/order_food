@@ -22,7 +22,6 @@ function Header({ onShowBasket }) {
 
   const calculateTotalAmount = () => {
     const sum = items.reduce((s, item) => s + item.amount, 0)
-
     return sum
   }
 
@@ -69,6 +68,7 @@ const ThemeBtnStyled = styled(ButtonMui)(({ theme }) => ({
     background: theme.palette.primary.dark,
     width: '100px',
     height: '50px',
+    border: 'none',
   },
 }))
 

@@ -19,6 +19,7 @@ export default BasketButton
 const StyledBasketButton = styled(ButtonMui)(({ theme }) => ({
   '&': {
     background: theme.palette.primary.main,
+    border: 'none',
   },
   '&:hover': {
     background: theme.palette.primary.dark,
